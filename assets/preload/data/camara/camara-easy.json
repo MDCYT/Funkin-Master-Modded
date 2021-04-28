@@ -1,0 +1,21 @@
+{
+  "notes": [],
+  "sections": 70,
+  "bpm": 166,
+  "song": {
+    "isMoody": false,
+    "player1": "bf",
+    "sectionLengths": [],
+    "player2": "azul",
+    "notes": [],
+    "cutsceneType": "none",
+    "song": "Camara",
+    "sections": 0,
+    "validScore": true,
+    "needsVoices": true,
+    "uiType": "normal",
+    "gf": "gf",
+    "speed": 1,
+    "bpm": 166
+  }
+}
