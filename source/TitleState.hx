@@ -195,7 +195,7 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('newgrounds_logo'));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('logo'));
 		add(ngSpr);
 		ngSpr.visible = false;
 		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
@@ -359,11 +359,11 @@ class TitleState extends MusicBeatState
 
 		switch (curBeat)
 		{
-			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+			case 2:
+				createCoolText(['ninjamuffin99', 'mdc', 'kawaisprite', 'evilsk8er']);
 			// credTextShit.visible = true;
 			case 3:
-				addMoreText('present');
+				addMoreText('presentan');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -372,9 +372,9 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['In association', 'with']);
+				createCoolText(['En asociacion', 'con']);
 			case 7:
-				addMoreText('newgrounds');
+				addMoreText('FNF');
 				ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
@@ -396,15 +396,21 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
+				addMoreText('Chinga');
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('Night');
+				addMoreText('A');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
-
+				addMoreText('Da'); // credTextShit.text += '\nFunkin';
 			case 16:
+				addMoreText('Da'); // credTextShit.text += '\nFunkin';
+			case 17:
+				addMoreText('Da'); // credTextShit.text += '\nFunkin';
+			case 18:
+				addMoreText('Da'); // credTextShit.text += '\nFunkin';
+
+			case 33:
 				skipIntro();
 		}
 	}
