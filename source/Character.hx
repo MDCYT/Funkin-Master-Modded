@@ -528,6 +528,45 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);				
 				
 				playAnim('idle');
+
+			case 'dae':
+				var tex = Paths.getSparrowAtlas('Dae_new_assets');
+				frames = tex;
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
+	
+				animation.addByPrefix('firstDeath', "BF dies", 24, false);
+				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+	
+				animation.addByPrefix('scared', 'BF idle shaking', 24);
+
+				addOffset('idle');
+				addOffset("singUP", 13, 12);
+				addOffset("singRIGHT", -12, -5);
+				addOffset("singLEFT", 50, 5);
+				addOffset("singDOWN", 2, -63);
+				addOffset("singUPmiss", 14, 28);
+				addOffset("singRIGHTmiss", -9, -11);
+				addOffset("singLEFTmiss", 46, 0);
+				addOffset("singDOWNmiss", 0, -65);
+				addOffset("hey", 10, 6);
+				addOffset('firstDeath', 52, 12);
+				addOffset('deathLoop', 53, 8);
+				addOffset('deathConfirm', 54, 50);
+				addOffset('scared', 0, 6);
+	
+				playAnim('idle');
+	
+				flipX = true;
 		}
 
 		dance();
@@ -537,7 +576,7 @@ class Character extends FlxSprite
 			flipX = !flipX;
 
 			// Doesn't flip for BF, since his are already in the right place???
-			if (!curCharacter.startsWith('bf'))
+			if (!curCharacter.startsWith('bf') && !curCharacter.startsWith('dae'))
 			{
 				// var animArray
 				var oldRight = animation.getByName('singRIGHT').frames;
@@ -557,7 +596,7 @@ class Character extends FlxSprite
 
 	override function update(elapsed:Float)
 	{
-		if (!curCharacter.startsWith('bf'))
+		if (!curCharacter.startsWith('bf') && !curCharacter.startsWith('dae'))
 		{
 			if (animation.curAnim.name.startsWith('sing'))
 			{

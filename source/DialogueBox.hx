@@ -139,6 +139,17 @@ class DialogueBox extends FlxSpriteGroup
 		handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
 		add(handSelect);
 
+		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
+		dropText.font = 'Pixel Arial 11 Bold';
+		dropText.color = 0xFFD89494;
+		add(dropText);
+
+		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
+		swagDialogue.font = 'Pixel Arial 11 Bold';
+		swagDialogue.color = 0xFF3F2021;
+		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+		add(swagDialogue);
+
 	}   if (PlayState.SONG.song.toLowerCase()=='bonus'){
 
 		portraitLeft = new FlxSprite(-20, 40);
@@ -176,6 +187,17 @@ class DialogueBox extends FlxSpriteGroup
 		box.screenCenter(X);
 		portraitLeft.screenCenter(X);
 
+		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 24);
+		dropText.font = 'Fipps Regular';
+		dropText.color = 0xFFD89494;
+		add(dropText);
+
+		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 24);
+		swagDialogue.font = 'Fipps Regular';
+		swagDialogue.color = 0xFF3F2021;
+		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('clickText'), 0.6)];
+		add(swagDialogue);
+
 	}
 
 
@@ -185,16 +207,7 @@ class DialogueBox extends FlxSpriteGroup
 			// box.flipX = true;
 		}
 
-		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.font = 'Pixel Arial 11 Bold';
-		dropText.color = 0xFFD89494;
-		add(dropText);
 
-		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.font = 'Pixel Arial 11 Bold';
-		swagDialogue.color = 0xFF3F2021;
-		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
-		add(swagDialogue);
 
 		dialogue = new Alphabet(0, 80, "", false, true);
 		// dialogue.x = 90;
@@ -311,6 +324,8 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					portraitLeft.visible = true;
 					portraitLeft.animation.play('enter');
+
+					box.flipX = true;
 				}
 			case 'bf-new':
 				portraitLeft.visible = false;
@@ -319,6 +334,9 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					portraitRight.visible = true;
 					portraitRight.animation.play('enter');
+
+					box.flipX = false;
+
 				}
 			case 'new':
 				portraitLeft.visible = false;
@@ -327,6 +345,8 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					portraitNew.visible = true;
 					portraitNew.animation.play('enter');
+
+					box.flipX = false;
 				}
 		}
 	}
