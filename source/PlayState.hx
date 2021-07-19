@@ -1765,7 +1765,19 @@ class PlayState extends MusicBeatState
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
 
+				// new FlxTimer().start(1, function(tmr:FlxTimer)
+				// 	{
+				// 	if(curSong.toLowerCase() == "pico"){
+	
+				// 		FlxG.switchState(new VideoState('assets/videos/video.webm', new StoryMenuState()));
+	
+				// 	} else {
+	
 				FlxG.switchState(new StoryMenuState());
+	
+				// 	}
+				// });
+
 
 				// if ()
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
@@ -1810,7 +1822,19 @@ class PlayState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.sound.music.stop();
 
-				LoadingState.loadAndSwitchState(new PlayState());
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+				{
+					if(curSong.toLowerCase() == "pico"){
+						
+						LoadingState.loadAndSwitchState(new VideoState('assets/videos/video.webm', new PlayState()), true);
+
+					} 
+					else {
+
+						LoadingState.loadAndSwitchState(new PlayState(), true);
+
+					}
+				});
 			}
 		}
 		else
