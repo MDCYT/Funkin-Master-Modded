@@ -27,6 +27,7 @@ class MenuCharacter extends FlxSprite
 		animation.addByPrefix('senpai', "SENPAI idle Black Lines", 24);
 		animation.addByPrefix('morado', "morado idle BLACK LINES", 24);
 		animation.addByPrefix('azul', "Dad idle dance BLACK LINE", 24);
+		animation.addByPrefix('nothing', "invisible BLACK LINES", 24);
 		// Parent Christmas Idle
 
 		animation.play(character);

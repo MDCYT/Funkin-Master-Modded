@@ -58,6 +58,7 @@
 		<library name="week5"    preload="true" />
 		<library name="week6"    preload="true" />
 		<library name="week7"    preload="true" />
+		<library name="notes"    preload="true" />
 	</section>
 	
 	<section if="NO_PRELOAD_ALL">
@@ -71,6 +72,7 @@
 		<library name="week5"    preload="false" />
 		<library name="week6"    preload="false" />
 		<library name="week7"    preload="false" />
+		<library name="notes"    preload="false" />
 	</section>
 	
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
@@ -120,6 +122,7 @@
 	<haxelib name="newgrounds"/>
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod"/>
+	<haxelib name="hxcpp-debug-server" if="desktop"/>
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="actuate"/>
     <haxelib name="extension-webm" if="desktop"/>

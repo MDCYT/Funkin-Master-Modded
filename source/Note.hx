@@ -4,11 +4,12 @@ import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
 import flixel.util.FlxColor;
+
+using StringTools;
+
 #if polymod
 import polymod.format.ParseRules.TargetSignatureElement;
 #end
-
-using StringTools;
 
 class Note extends FlxSprite
 {
@@ -21,6 +22,8 @@ class Note extends FlxSprite
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
 
+	public var noteType:Int = 0;
+
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
 
@@ -32,13 +35,13 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?noteType:Int = 0)
 	{
 		super();
 
 		if (prevNote == null)
 			prevNote = this;
-
+		this.noteType = noteType;
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
 
@@ -80,26 +83,43 @@ class Note extends FlxSprite
 				updateHitbox();
 
 			default:
-				frames = Paths.getSparrowAtlas('NOTE_assets');
+				if (noteType == 1)
+				{
+					frames = Paths.getSparrowAtlas('NOTE_fire');
+					animation.addByPrefix('greenScroll', 'green fire');
+					animation.addByPrefix('redScroll', 'red fire');
+					animation.addByPrefix('blueScroll', 'blue fire');
+					animation.addByPrefix('purpleScroll', 'purple fire');
 
-				animation.addByPrefix('greenScroll', 'green0');
-				animation.addByPrefix('redScroll', 'red0');
-				animation.addByPrefix('blueScroll', 'blue0');
-				animation.addByPrefix('purpleScroll', 'purple0');
+					x -= 40;
 
-				animation.addByPrefix('purpleholdend', 'pruple end hold');
-				animation.addByPrefix('greenholdend', 'green hold end');
-				animation.addByPrefix('redholdend', 'red hold end');
-				animation.addByPrefix('blueholdend', 'blue hold end');
+					setGraphicSize(Std.int(width * 0.7));
+					updateHitbox();
+					antialiasing = true;
+				}
+				else
+				{
+					frames = Paths.getSparrowAtlas('NOTE_assets');
 
-				animation.addByPrefix('purplehold', 'purple hold piece');
-				animation.addByPrefix('greenhold', 'green hold piece');
-				animation.addByPrefix('redhold', 'red hold piece');
-				animation.addByPrefix('bluehold', 'blue hold piece');
+					animation.addByPrefix('greenScroll', 'green0');
+					animation.addByPrefix('redScroll', 'red0');
+					animation.addByPrefix('blueScroll', 'blue0');
+					animation.addByPrefix('purpleScroll', 'purple0');
 
-				setGraphicSize(Std.int(width * 0.7));
-				updateHitbox();
-				antialiasing = true;
+					animation.addByPrefix('purpleholdend', 'pruple end hold');
+					animation.addByPrefix('greenholdend', 'green hold end');
+					animation.addByPrefix('redholdend', 'red hold end');
+					animation.addByPrefix('blueholdend', 'blue hold end');
+
+					animation.addByPrefix('purplehold', 'purple hold piece');
+					animation.addByPrefix('greenhold', 'green hold piece');
+					animation.addByPrefix('redhold', 'red hold piece');
+					animation.addByPrefix('bluehold', 'blue hold piece');
+
+					setGraphicSize(Std.int(width * 0.7));
+					updateHitbox();
+					antialiasing = true;
+				}
 		}
 
 		switch (noteData)
