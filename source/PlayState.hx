@@ -2040,14 +2040,14 @@ class PlayState extends MusicBeatState
 					{
 						for (coolNote in possibleNotes)
 						{
-							if (controlArray[coolNote.noteData])
+							if (controlArray[coolNote.noteData%4])
 								goodNoteHit(coolNote);
 							else
 							{
 								var inIgnoreList:Bool = false;
 								for (shit in 0...ignoreList.length)
 								{
-									if (controlArray[ignoreList[shit]])
+									if (controlArray[ignoreList[shit]%4])
 										inIgnoreList = true;
 								}
 								if (!inIgnoreList)
@@ -2221,21 +2221,18 @@ class PlayState extends MusicBeatState
 
 	function badNoteCheck()
 	{
-		// just double pasting this shit cuz fuk u
-		// REDO THIS SYSTEM!
-		var upP = controls.UP_P;
-		var rightP = controls.RIGHT_P;
-		var downP = controls.DOWN_P;
-		var leftP = controls.LEFT_P;
-
-		if (leftP)
-			noteMiss(0);
-		if (downP)
-			noteMiss(1);
-		if (upP)
-			noteMiss(2);
-		if (rightP)
-			noteMiss(3);
+		/*
+			"just double pasting this shit cuz fuk u.
+			REDO THIS SYSTEM!"
+			-A dumb ass
+		*/
+		
+		//NO MORE DOUBLE PASTED SHIT
+		
+		var cool:Array<Bool> = [controls.LEFT_P,controls.DOWN_P,controls.UP_P,controls.RIGHT_P];
+		for(i in 0... cool.length)
+			if(cool[i])
+				noteMiss(i);
 	}
 
 	function noteCheck(keyP:Bool, note:Note):Void
